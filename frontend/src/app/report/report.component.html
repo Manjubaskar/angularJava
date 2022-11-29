@@ -1,0 +1,65 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Report Generation</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        
+        <div class="row">
+            <!-- <div class="col-sm-4">col-sm-8</div>
+            <div class="col-sm-4">col-sm-4</div>
+            <div class="col-sm-4">col-sm-8</div> -->
+            
+        <input class="start" type="date" id="start_date" name="start_date" #start_date>  
+        <input class="start" type="date" id="end_date" name="end_date" #end_date>
+        <button class="start" type="button" (click)="setValue(start_date.value,end_date.value)">Go</button> </div>
+        
+    </mat-card-content> 
+<div #pdfTable>
+    <table mat-table [dataSource]="dataSource"class="mat-elevation-z8" style="width:100%;"  >
+        <!-- <tr  *ngFor="let item of dataSource | appFilter:searchText"> -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Contact Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Title </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef > City </th>
+            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef>Position</th>
+            <td mat-cell *matCellDef="let element"> {{element.position.position_name}} </td>
+        </ng-container>
+
+        <!-- </tr> -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"  ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr> 
+       
+    </table>
+<br>
+    <button class="start" (click)="downloadAsPDF()" >Export To PDF</button>
+ <!-- <div class="container" id="pdfTable" #pdfTable>   --></div><br>
+    <a  class="start" href="http://localhost:4200">Back</a>
+</mat-card>

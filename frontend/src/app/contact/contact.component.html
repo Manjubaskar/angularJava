@@ -1,0 +1,126 @@
+<div style="text-align:center">
+  <h1>
+    Contact Management
+  </h1>
+</div>
+<mat-card>
+    <mat-card-header> 
+        <mat-card-title>Contacts</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+
+        <!-- <div>
+            <input type="text" class="form-control search-field"  placeholder="Search" name= "search here" [(ngModel)]= "searchText">
+
+        </div>
+        <br> -->
+        <mat-form-field appearance="standard">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="search here" #input>
+          </mat-form-field>
+        <table mat-table [dataSource]="dataSource"  matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8" style="width: 100%;" >
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>Contact Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header >Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> Phone </th>
+                <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef> Address </th>
+                <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="city">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+                <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef>Position</th>
+                <td mat-cell *matCellDef="let element"> {{element.position.position_name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button (click)="deleteContact(element.id)" color="secondary">Delete
+                        Contact</button>
+                    <button mat-raised-button (click)="selectContact(element)" color="secondary">Select Contact</button>
+
+                </td>
+            </ng-container>
+            <!-- </tr> -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"  ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr> 
+           
+        </table>
+        
+        <mat-paginator #paginator [pageSizeOptions]="[10,2, 4, 6,20]" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+    
+</mat-card>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Create a New Contact</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form #f="ngForm" class="mat-elevation-z8" style="width: 100%; padding: 5px;">
+
+        
+            <mat-form-field>
+                <input matInput placeholder="Name" name="name" [(ngModel)]="contact.name" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Title" name="title" [(ngModel)]="contact.title" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Email" name="email" [(ngModel)]="contact.email" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Phone" name="phone" [(ngModel)]="contact.phone" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Address" name="address" [(ngModel)]="contact.address" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="City" name="city" [(ngModel)]="contact.city" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Positions</mat-label>
+                <select matNativeControl name="position" [(ngModel)]="position.position_id">
+                  <option  [value]="position.position_id"  *ngFor="let position of position">{{position.position_name}}</option>
+                </select>
+              </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button *ngIf="!contact.id" (click)="createContact(f)" color="primary">Save Contact</button>
+        <button mat-raised-button *ngIf="contact.id" (click)="updateContact(f)" color="primary">Update Contact</button>
+        <button mat-raised-button (click)="newContact()" color="primary">New Contact</button>
+
+    </mat-card-actions>
+
+
+    <a  href="http://localhost:4200">Back</a>
+</mat-card>

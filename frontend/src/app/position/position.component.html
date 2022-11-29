@@ -1,0 +1,62 @@
+<div style="text-align:center">
+    <h1>
+      Position Management
+    </h1>
+  </div>
+  <mat-card>
+    <mat-card-header>
+        <mat-card-title>Positions</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+            <ng-container matColumnDef="position_id">
+                <th mat-header-cell *matHeaderCellDef>position Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.position_id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="position_name">
+                <th mat-header-cell *matHeaderCellDef>position_name </th>
+                <td mat-cell *matCellDef="let element"> {{element.position_name}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-raised-button (click)="deletePosition(element.position_id)" color="secondary">Delete
+                        Position</button>
+                    <button mat-raised-button (click)="selectPosition(element)" color="secondary">Select Position</button>
+
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Create a New Position</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form #f="ngForm" class="mat-elevation-z8" style="width: 100%; padding: 5px;">
+
+            <!-- <mat-form-field>
+                <input matInput placeholder="position_id" name="position_id" [(ngModel)]="position.position_id" required>
+            </mat-form-field> -->
+            <mat-form-field>
+                <input matInput placeholder="position_name" name="position_name" [(ngModel)]="position.position_name" required>
+            </mat-form-field>
+            
+        </form>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button *ngIf="!position.position_id" (click)="createPosition(f)" color="primary">Save Position</button>
+        <button mat-raised-button *ngIf="position.position_id" (click)="updatePosition(f)" color="primary">Update Position</button>
+        <button mat-raised-button (click)="newPosition()" color="primary">New Position</button>
+
+    </mat-card-actions>
+    <a  href="http://localhost:4200">Back</a>
+</mat-card>

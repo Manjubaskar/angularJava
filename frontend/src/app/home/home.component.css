@@ -1,0 +1,35 @@
+a:link, a:visited {
+    background-color: rgb(27, 16, 59);
+    color: rgb(61, 145, 200);
+    border: 2px solid rgb(46, 141, 152);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: large;
+    font-weight: bolder;
+    margin-left: 900px;
+    
+  }
+  
+  a:hover, a:active {
+    background-color: rgb(36, 175, 235);
+    color: white;
+  }
+
+  .para{
+  
+    text-align: center;
+    color: rgb(65, 173, 227);
+    font-style: italic;
+  }
+  .body{
+    background-image: url('../image/bubble.png');
+    max-width:100%;
+  }
+  .div{
+    margin-top: -25px;
+  }
+  .text{
+    margin-top: 200px;
+  }

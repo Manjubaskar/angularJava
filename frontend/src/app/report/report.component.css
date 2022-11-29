@@ -1,0 +1,29 @@
+a:link, a:visited {
+    background-color: rgb(88, 5, 137);
+    color: rgb(243, 246, 248);
+   
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: large;
+    border-radius: 5px;
+  }
+  
+  a:hover, a:active {
+    background-color: rgb(36, 175, 235);
+    color: white;
+  }
+
+.start{
+    margin-left: 20px;
+    background-color:rgb(88, 5, 137);
+    color: rgb(243, 246, 248);
+   
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: large;
+    border-radius: 5px;
+  }
